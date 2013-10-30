@@ -1,62 +1,65 @@
 /*global cordova*/
-cordova.define('bluetoothSerial', function (require, exports, module) {
-    module.exports = {
+module.exports = {
 
-        connect: function (macAddress, success, failure) {
-            cordova.exec(success, failure, "BluetoothSerial", "connect", [macAddress]);
-        },
+    connect: function (macAddress, success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "connect", [macAddress]);
+    },
 
-        disconnect: function (success, failure) {
-            cordova.exec(success, failure, "BluetoothSerial", "disconnect", []);
-        },
+    // Android only - see http://goo.gl/1mFjZY
+    connectInsecure: function (macAddress, success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "connectInsecure", [macAddress]);
+    },
 
-        // list bound devices
-        list: function (success, failure) {
-            cordova.exec(success, failure, "BluetoothSerial", "list", []);
-        },
+    disconnect: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "disconnect", []);
+    },
 
-        isEnabled: function (success, failure) {
-            cordova.exec(success, failure, "BluetoothSerial", "isEnabled", []);
-        },
+    // list bound devices
+    list: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "list", []);
+    },
 
-        isConnected: function (success, failure) {
-            cordova.exec(success, failure, "BluetoothSerial", "isConnected", []);
-        },
+    isEnabled: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "isEnabled", []);
+    },
 
-        // the number of bytes of data available to read is passed to the success function
-        available: function (success, failure) {
-            cordova.exec(success, failure, "BluetoothSerial", "available", []);
-        },
+    isConnected: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "isConnected", []);
+    },
 
-        // read all the data in the buffer
-        read: function (success, failure) {
-            cordova.exec(success, failure, "BluetoothSerial", "read", []);
-        },
+    // the number of bytes of data available to read is passed to the success function
+    available: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "available", []);
+    },
 
-        // reads the data in the buffer up to and including the delimiter
-        readUntil: function (delimiter, success, failure) {
-            cordova.exec(success, failure, "BluetoothSerial", "readUntil", [delimiter]);
-        },
+    // read all the data in the buffer
+    read: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "read", []);
+    },
 
-        // writes data to the bluetooth serial port - data must be a string
-        write: function (data, success, failure) {
-            cordova.exec(success, failure, "BluetoothSerial", "write", [data]);
-        },
+    // reads the data in the buffer up to and including the delimiter
+    readUntil: function (delimiter, success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "readUntil", [delimiter]);
+    },
 
-        // calls the success callback when new data is available
-        subscribe: function (delimiter, success, failure) {
-            cordova.exec(success, failure, "BluetoothSerial", "subscribe", [delimiter]);
-        },
+    // writes data to the bluetooth serial port - data must be a string
+    write: function (data, success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "write", [data]);
+    },
 
-        // removes data subscription
-        unsubscribe: function (success, failure) {
-            cordova.exec(success, failure, "BluetoothSerial", "unsubscribe", []);
-        },
+    // calls the success callback when new data is available
+    subscribe: function (delimiter, success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "subscribe", [delimiter]);
+    },
 
-        // clears the data buffer
-        clear: function (success, failure) {
-            cordova.exec(success, failure, "BluetoothSerial", "clear", []);
-        }
+    // removes data subscription
+    unsubscribe: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "unsubscribe", []);
+    },
 
-    };
-});
+    // clears the data buffer
+    clear: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "clear", []);
+    }
+
+};
